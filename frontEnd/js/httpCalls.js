@@ -16,7 +16,7 @@ function sendReq() {
             let Recovered = myjsonData.recovered;
             
 
-
+            let dist = myjsonData.Dist;
 
             let myChart = document.getElementById("chart").getContext("2d");
             let display = new Chart(myChart, 
@@ -35,7 +35,7 @@ function sendReq() {
                         },
                         {
                             label: "Confirmed",
-                            data: Confirm,                    
+                            data: Confirmed,                    
                             backgroundColor: "Red",
                             borderWidth: 1,
                             borderColor: "#777"
