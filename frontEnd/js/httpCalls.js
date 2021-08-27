@@ -7,6 +7,56 @@ function sendReq() {
     httpRequestForOneData.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             document.getElementById("data").innerHTML = this.response ;
+
+            let myjsonData = JSON.parse(this.response);
+
+            let Active = myjsonData.active;
+            let Confirmed = myjsonData.confirm;
+            let Deceased = myjsonData.deceased;
+            let Recovered = myjsonData.recovered;
+            
+
+
+
+            let myChart = document.getElementById("chart").getContext("2d");
+            let display = new Chart(myChart, 
+            {
+                type: 'line',
+                data: 
+                {            
+                    labels: dist,
+                    datasets: [
+                        {
+                            label: "Active",
+                            data: Active,                    
+                            backgroundColor: "Blue",
+                            borderWidth: 1,
+                            borderColor: "Black"                    
+                        },
+                        {
+                            label: "Confirmed",
+                            data: Confirm,                    
+                            backgroundColor: "Red",
+                            borderWidth: 1,
+                            borderColor: "#777"
+                        },
+                        {
+                            label: "Deceased",
+                            data: Deceased,                    
+                            backgroundColor: "Yellow",
+                            borderWidth: 1,
+                            borderColor: "#777"
+                        },
+                        {
+                            label: "Recovered",
+                            data: Recovered,                    
+                            backgroundColor: "Green",
+                            borderWidth: 1,
+                            borderColor: "#777"
+                        }
+                    ]
+                }            
+            });
         }
     };
     httpRequestForOneData.open("GET", "http://127.0.0.1:9099/st/" + state, true);
