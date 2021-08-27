@@ -14,6 +14,7 @@ function sendReq() {
             let Confirmed = myjsonData.confirm;
             let Deceased = myjsonData.deceased;
             let Recovered = myjsonData.recovered;
+            console.log(Recovered);
             
 
             let dist = myjsonData.Dist;
