@@ -2,8 +2,7 @@ let express = require("express");
 var cors = require("cors");
 
 const app = express();
-
-app.get("/st/:nameOfState", cors(), (req, res) => {
+app.get("/st/:nameOfState", cors(), (req, res) => { 
   const stateName = req.params.nameOfState;
   const fetch = require("node-fetch");
   let TriggerState;
@@ -56,7 +55,7 @@ app.get("/st/:nameOfState", cors(), (req, res) => {
 
     TriggerState = Tamil_Nadu;
     stateNameStr = "Tamil Nadu";
-    
+
   }
 
   if (stateName == "AndhraPradesh") {
@@ -78,7 +77,7 @@ app.get("/st/:nameOfState", cors(), (req, res) => {
       "Y.S.R. Kadapa",
     ];
     TriggerState = Andhra_Pradesh;
-    stateNameStr = "Andhra Pradesh";
+    stateNameStr = "Andhra Pradesh";   // similar like json data ****
   }
 
 
