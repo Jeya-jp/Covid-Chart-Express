@@ -2,11 +2,14 @@ let filterUrl = window.location.href;
 
 let filter = filterUrl.split("st/");
 let state = filter[1];
+console.log(state);
+
 function sendReq() {
+    document.getElementById("statename").innerHTML = "COVID REPORT - " + state;
     var httpRequestForOneData = new XMLHttpRequest();
     httpRequestForOneData.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("data").innerHTML = this.response ;
+             
 
             let myjsonData = JSON.parse(this.response);
 
@@ -14,8 +17,6 @@ function sendReq() {
             let Confirmed = myjsonData.confirm;
             let Deceased = myjsonData.deceased;
             let Recovered = myjsonData.recovered;
-            console.log(Recovered);
-            
 
             let dist = myjsonData.Dist;
 
