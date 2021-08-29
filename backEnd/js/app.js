@@ -1,6 +1,9 @@
 let express = require("express");
 var cors = require("cors");
 
+var statesInJs = require('./statesArray');
+
+
 const app = express();
 app.get("/st/:nameOfState", cors(), (req, res) => 
 { 
@@ -1150,6 +1153,13 @@ app.get("/st/:nameOfState", cors(), (req, res) =>
     // })
 
 });
+
+
+app.get("/total", cors(), (req, res) => {
+  console.log(statesInJs.s);
+});
+
+
 
 const port = 9099;
 app.listen(process.env.PORT || port, () =>
