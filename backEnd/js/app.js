@@ -1100,16 +1100,17 @@ app.get("/st/:nameOfState", cors(), (req, res) =>
 
 
 
-    //    Subtracting active count
+      //  Subtracting active count
 
 
     // let Active2 = [], temp = [];
-    // fetch("Covid.json").then(function(resp)
+    // fetch("Covid.json", settings).then(function(resp)
     // {
     //     return resp.json();
     // })
     // .then(function(result)
     // {
+    //     console.log(result);
     //     var ans = document.getElementById("incDec");
     //     for(i = 0; i < TriggerState.length;i++) 
     //     {
@@ -1140,7 +1141,7 @@ app.get("/st/:nameOfState", cors(), (req, res) =>
     //         }
     //     }
             
-    //     for(let i = 0; i < dist.length; i++)
+    //     for(let i = 0; i < TriggerState.length; i++)
     //     {
     //         var node = document.createElement("li");
     //         var textnode = document.createTextNode(dist[i] + " = " + Active[i]);
