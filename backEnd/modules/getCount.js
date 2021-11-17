@@ -1,23 +1,11 @@
-let express = require("express");
-var cors = require("cors");
-let getCount = require('../modules/getCount');
+exports.Count = function (req, res) {
+    console.log("Hello");
 
-var statesInJs = require('./statesArray');
-
-
-const app = express();
-app.get("/st/:nameOfState", cors(), (req, res) => 
-{ 
-    const stateName = req.params.nameOfState;
     const fetch = require("node-fetch");
-    let TriggerState;
-    let stateNameStr;
 
-
-
-
-//   ---------------------------------------------- State Names and trigger Names 
-    if (stateName == "AndhraPradesh") 
+    function state(stateName)
+    {
+        if (stateName == "AndhraPradesh") 
     {
         let Andhra_Pradesh = 
         [
@@ -1051,128 +1039,33 @@ app.get("/st/:nameOfState", cors(), (req, res) =>
       TriggerState = Tamil_Nadu;
       stateNameStr = "Tamil Nadu";  
     }
+    }
 
-  
+    let stateNames = ["AndhraPradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chandigarh", "Chhattisgarh",
+                        "Dadra and Nagar Haveli and Daman and Diu", "Delhi", "Goa", "Gujarat", "Haryana", "Himachal Pradesh",
+                    "Jammu and Kashmir", "Jharkhand", "Karnataka", "Kerala", "Ladakh", "Lakshadweep", "Madhya Pradesh",
+                "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Odisha", "Puducherry", "Punjab",
+                "Rajasthan", "Sikkim", "Telangana", "Tripura", "Uttar Pradesh", "Uttarakhand", "West Bengal", "TamilNadu"
+            ];
 
+            let url = "https://api.covid19india.org/state_district_wise.json";
 
+            let stateActiveCount = [];
 
+            let settings = { method: "Get" };
+          
+            fetch(url, settings)
+              .then((res) => res.json())
+              .then((json) => 
+              {
+                  for(let i = 0; i < stateNames.length; i++)
+                  {
+                      
+                      stateActiveCount[i]  = json.stateNames[i].districtData;
+                  }
+                  console.log(stateActiveCount);
+                // console.log(json);
+              });
 
+}
 
-
-// -------------------------------------------------end state
-
-
-
-
-
-
-
-
-
-
-
-// ------------------public api 
-
-  
-
-  let url = "https://api.covid19india.org/state_district_wise.json";
-
-  let settings = { method: "Get" };
-
-  fetch(url, settings)
-    .then((res) => res.json())
-    .then((json) => 
-    {
-      let Active = [],
-        Confirm = [],
-        Deceased = [],
-        Recovered = [];
-      let sendData = {
-        Dist: TriggerState,
-        active: Active,
-        confirm: Confirm,
-        deceased: Deceased,
-        recovered: Recovered,
-      };
-      for (i = 0; i < TriggerState.length; i++) {
-        Active[i] = json[stateNameStr].districtData[TriggerState[i]].active;
-        Confirm[i] = json[stateNameStr].districtData[TriggerState[i]].confirmed;
-        Deceased[i] = json[stateNameStr].districtData[TriggerState[i]].deceased;
-        Recovered[i] =
-          json[stateNameStr].districtData[TriggerState[i]].recovered;
-      }
-      res.send(sendData);
-    });
-
-
-
-      //  Subtracting active count
-
-
-//     let Active2 = [], temp = [];
-//     fetch("Covid.json", settings).then(function(resp)
-//     {
-//         return resp.json();
-//     })
-//     .then(function(result)
-//     {
-//         console.log(result);
-//         // var ans = document.getElementById("incDec");
-//         for(i = 0; i < TriggerState.length;i++) 
-//         {
-//             Active2[i] = result[stateNameStr].districtData[TriggerState[i]].active;                 
-//             temp[i] = Active[i] - Active2[i];         
-//         }
-           
-//         let s = [];            
-//         s = temp.map(String);
-
-//         for(let i = 0; i < TriggerState.length; i++)
-//         {
-//             if(Active2[i] <= Active[i])
-//             {                    
-//                 var node = document.createElement("li");
-//                 var textnode = document.createTextNode(Dist[i] + " = " + s[i]);
-//                 node.appendChild(textnode);
-//                 document.getElementById("box2").appendChild(node);                     
-//             }
-
-//             if(Active2[i] > Active[i])
-//             {
-//                 s[i] = s[i].replace('-', ''); 
-//                 var node = document.createElement("li");
-//                 var textnode = document.createTextNode(Dist[i] + " = " + s[i]);
-//                 node.appendChild(textnode);
-//                 document.getElementById("box3").appendChild(node);                            
-//             }
-//         }
-            
-//         for(let i = 0; i < TriggerState.length; i++)
-//         {
-//             var node = document.createElement("li");
-//             var textnode = document.createTextNode(Dist[i] + " = " + Active[i]);
-//             node.appendChild(textnode);
-//             document.getElementById("box1").appendChild(node);                
-//         }            
-//     })
-    
-});
-
-
-// app.get("/total", cors(), (req, res) => {
-//   console.log(statesInJs.s);
-// });
-
-app.get("/getCount", cors(), (req,res) => 
-{
-    getCount.Count(req,res)
-});
-
-
-
-
-
-const port = 9099;
-app.listen(process.env.PORT || port, () =>
-  console.log(`Listening on port ${port}..`)
-);
