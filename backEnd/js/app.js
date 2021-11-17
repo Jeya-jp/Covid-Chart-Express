@@ -1,6 +1,9 @@
 let express = require("express");
 var cors = require("cors");
 
+var statesInJs = require('./statesArray');
+
+
 const app = express();
 app.get("/st/:nameOfState", cors(), (req, res) => 
 { 
@@ -1103,54 +1106,61 @@ app.get("/st/:nameOfState", cors(), (req, res) =>
       //  Subtracting active count
 
 
-    // let Active2 = [], temp = [];
-    // fetch("Covid.json", settings).then(function(resp)
-    // {
-    //     return resp.json();
-    // })
-    // .then(function(result)
-    // {
-    //     console.log(result);
-    //     var ans = document.getElementById("incDec");
-    //     for(i = 0; i < TriggerState.length;i++) 
-    //     {
-    //         Active2[i] = result[stateNameStr].districtData[TriggerState[i]].active;                 
-    //         temp[i] = Active[i] - Active2[i];         
-    //     }
+    let Active2 = [], temp = [];
+    fetch("Covid.json", settings).then(function(resp)
+    {
+        return resp.json();
+    })
+    .then(function(result)
+    {
+        console.log(result);
+        // var ans = document.getElementById("incDec");
+        for(i = 0; i < TriggerState.length;i++) 
+        {
+            Active2[i] = result[stateNameStr].districtData[TriggerState[i]].active;                 
+            temp[i] = Active[i] - Active2[i];         
+        }
            
-    //     let s = [];            
-    //     s = temp.map(String);
+        let s = [];            
+        s = temp.map(String);
 
-    //     for(let i = 0; i < TriggerState.length; i++)
-    //     {
-    //         if(Active2[i] <= Active[i])
-    //         {                    
-    //             var node = document.createElement("li");
-    //             var textnode = document.createTextNode(dist[i] + " = " + s[i]);
-    //             node.appendChild(textnode);
-    //             document.getElementById("box2").appendChild(node);                     
-    //         }
+        for(let i = 0; i < TriggerState.length; i++)
+        {
+            if(Active2[i] <= Active[i])
+            {                    
+                var node = document.createElement("li");
+                var textnode = document.createTextNode(Dist[i] + " = " + s[i]);
+                node.appendChild(textnode);
+                document.getElementById("box2").appendChild(node);                     
+            }
 
-    //         if(Active2[i] > Active[i])
-    //         {
-    //             s[i] = s[i].replace('-', ''); 
-    //             var node = document.createElement("li");
-    //             var textnode = document.createTextNode(dist[i] + " = " + s[i]);
-    //             node.appendChild(textnode);
-    //             document.getElementById("box3").appendChild(node);                            
-    //         }
-    //     }
+            if(Active2[i] > Active[i])
+            {
+                s[i] = s[i].replace('-', ''); 
+                var node = document.createElement("li");
+                var textnode = document.createTextNode(Dist[i] + " = " + s[i]);
+                node.appendChild(textnode);
+                document.getElementById("box3").appendChild(node);                            
+            }
+        }
             
-    //     for(let i = 0; i < TriggerState.length; i++)
-    //     {
-    //         var node = document.createElement("li");
-    //         var textnode = document.createTextNode(dist[i] + " = " + Active[i]);
-    //         node.appendChild(textnode);
-    //         document.getElementById("box1").appendChild(node);                
-    //     }            
-    // })
-
+        for(let i = 0; i < TriggerState.length; i++)
+        {
+            var node = document.createElement("li");
+            var textnode = document.createTextNode(Dist[i] + " = " + Active[i]);
+            node.appendChild(textnode);
+            document.getElementById("box1").appendChild(node);                
+        }            
+    })
+    
 });
+
+
+app.get("/total", cors(), (req, res) => {
+  console.log(statesInJs.s);
+});
+
+
 
 const port = 9099;
 app.listen(process.env.PORT || port, () =>

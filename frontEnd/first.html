@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Project</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter:400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
+    <link rel="stylesheet" href="assets/css/Header-Blue.css">
+    <link rel="stylesheet" href="assets/css/Header-Dark.css">
+    <link rel="stylesheet" href="assets/css/Highlight-Blue.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"/>
+    
+    <title>Document</title>
+    <script>
+        function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+function filterFunction() {
+  var input, filter, ul, li, a, i;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  div
+    = document.getElementById("myDropdown");
+  a = div.getElementsByTagName("a");
+  for (i = 0; i <
+    a.length; i++) {
+    txtValue = a[i].textContent || a[i].innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      a[i].style.display = "";
+    } else {
+      a[i].style.display = "none";
+    }
+  }
+}
+    </script>
+    <style>
+        #myInput {
+  box-sizing: border-box;
+  background-image: url('searchicon.png');
+  background-position: 14px 12px;
+  background-repeat: no-repeat;
+  font-size: 16px;
+  padding: 14px 20px 12px 45px;
+  border: none;
+  border-bottom: 1px solid #ddd;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f6f6f6;
+  min-width: 230px;
+  overflow: auto;
+  border: 1px solid #ddd;
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {
+  background-color: #ddd;
+}
+
+.show {
+  display: block;
+}
+
+.dropbtn
+{
+    align-items: flex-end;
+}
+    </style>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+</head>
+
+<body>
+    <div>
+        <div class="header-blue">
+            <nav class="navbar navbar-dark navbar-expand-md navigation-clean-search">
+                <div class="container"><a class="navbar-brand" href="#">Covid Tracker</a><button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse"
+                        id="navcol-1">
+                        <ul class="nav navbar-nav">
+
+                            <div class="dropdown">
+                                <button onclick="myFunction()" class="dropbtn">States</button>
+                                <div id="myDropdown" class="dropdown-content">
+                                  <input type="text" autocomplete="off" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+                                  <a href="show.html?st/AndhraPradesh">Andhra Pradesh</a>
+                                  <a href="show.html?st/Arunachal Pradesh">Arunachal Pradesh</a>
+                                  <a href="show.html?st/Assam">Assam</a>
+                                  <a href="show.html?st/Bihar">Bihar</a>
+                                  <a href="show.html?st/Chandigarh">Chandigarh</a>
+                                  <a href="show.html?st/Chhattisgarh">Chhattisgarh</a>
+                                  <a href="show.html?st/Dadra and Nagar Haveli and Daman and Diu">Daman and Diu</a>
+                                  <a href="show.html?st/Delhi">Delhi</a>
+                                  <a href="show.html?st/Goa">Goa</a>
+                                  <a href="show.html?st/Gujarat">Gujarat</a>
+                                  <a href="show.html?st/Haryana">Haryana</a>
+                                  <a href="show.html?st/Himachal Pradesh">Himachal Pradesh</a>
+                                  <a href="show.html?st/Jammu and Kashmir">Kashmir</a>
+                                  <a href="show.html?st/Karnataka">Karnataka</a>
+                                  <a href="show.html?st/Jharkhand">Jharkhand</a>
+                                  <a href="show.html?st/Kerala">Kerala</a>
+                                  <a href="show.html?st/Ladakh">Ladakh</a>
+                                  <a href="show.html?st/Lakshadweep">Lakshadweep</a>
+                                  <a href="show.html?st/Madhya Pradesh">Madhya Pradesh</a>
+                                  <a href="show.html?st/Maharashtra">Maharashtra</a>
+                                  <a href="show.html?st/Manipur">Manipur</a>
+                                  <a href="show.html?st/Meghalaya">Meghalaya</a>
+                                  <a href="show.html?st/Mizoram">Mizoram</a>
+                                  <a href="show.html?st/Nagaland">Nagaland</a>
+                                  <a href="show.html?st/Odisha">Odisha</a>
+                                  <a href="show.html?st/Puducherry">Puducherry</a>
+                                  <a href="show.html?st/Punjab">Punjab</a>
+                                  <a href="show.html?st/Rajasthan">Rajasthan</a>
+                                  <a href="show.html?st/Sikkim">Sikkim</a>
+                                  <a href="show.html?st/TamilNadu">Tamil Nadu</a>
+                                  <a href="show.html?st/Telangana">Telangana</a>
+                                  <a href="show.html?st/Tripura">Tripura</a>
+                                  <a href="show.html?st/Uttar Pradesh">Uttar Pradesh</a>
+                                  <a href="show.html?st/Uttarakhand">Uttarakhand</a>
+                                  <a href="show.html?st/West Bengal">West Bengal</a>
+                                </div>
+                              </div>
+                            <!-- <li class="dropdown show nav-item"><a class="dropdown-toggle nav-link text-right" data-toggle="dropdown" aria-expanded="true" href="#">Dropdown </a> -->
+                                <!-- <div class="dropdown-menu dropdown-menu-right show" role="menu"><a class="dropdown-item" role="presentation" href="#">First Item</a><a class="dropdown-item" role="presentation" href="#">Second Item</a><a class="dropdown-item" role="presentation" href="#">Third Item</a></div> -->
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <div class="container hero">
+                <div class="row">
+                    <div class="col-12 col-lg-6 col-xl-5 offset-xl-1">
+                        <h1>The revolution is here.</h1>
+                        <p>Coronavirus disease (COVID-19) is an infectious disease caused by the SARS-CoV-2 virus. </p>
+                    </div>
+                    <div class="col-md-5 col-lg-5 offset-lg-1 offset-xl-0 d-none d-lg-block phone-holder">
+                        <!-- <div class="iphone-mockup"> -->
+                            <img src="assets/img/coronavirus-2.jpg" width="500" height="400">
+                            <!-- <div class="screen"></div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+
+
+    
+</body>
+
+</html>
